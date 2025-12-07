@@ -212,7 +212,14 @@ const MAP_ZONES = [
 
 // --- Gemini API Helper ---
 const callGemini = async (prompt, systemInstruction) => {
-  const apiKey = "AIzaSyDmQknSC-F4tmcMQZIrjKys4BSHvKwTZAY"; // Provided by environment
+  // 修改这里：从环境变量读取 API Key
+  const apiKey = import.meta.env.VITE_GEMINI_API_KEY || ""; 
+  
+  if (!apiKey) {
+    console.error("Gemini API Key is missing! Please check your .env file.");
+    // 可以在这里处理缺失 Key 的情况，目前仅打印错误
+  }
+
   try {
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`,

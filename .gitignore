@@ -1,4 +1,4 @@
-# Logs
+# 日志文件
 logs
 *.log
 npm-debug.log*
@@ -7,12 +7,23 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# 依赖目录
 node_modules
+.pnpm-store
+
+# 构建输出
 dist
 dist-ssr
-*.local
 
-# Editor directories and files
+# 本地环境配置 (重要：包含敏感密钥，切勿提交)
+.env
+.env.local
+.env.*.local
+
+# 例外规则 (保留示例文件)
+!.env.example
+
+# 编辑器与 IDE 配置文件
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -22,3 +33,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# 临时文件
+*.local
+tsconfig.tsbuildinfo
